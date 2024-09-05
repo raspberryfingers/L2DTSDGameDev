@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckofjrr7oyojy"]
+
+[ext_resource type="Texture2D" uid="uid://dxrbwqbarrbgp" path="res://Player/Assets/bulleteffect/Bullet_Pixel_16x16_04.png" id="1_mugkk"]
+[ext_resource type="Script" path="res://World/Enemies/EnemyBullet.gd" id="2_vmbny"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_chbe2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mugkk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nt2fn"]
+size = Vector2(14, 4)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_chbe2")
+autoplay = "default"
+script = ExtResource("2_vmbny")
+
+[node name="HitboxArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea2D"]
+shape = SubResource("RectangleShape2D_nt2fn")
+
+[connection signal="area_entered" from="HitboxArea2D" to="." method="_on_hitbox_area_2d_area_entered"]
+[connection signal="body_entered" from="HitboxArea2D" to="." method="_on_hitbox_area_2d_body_entered"]

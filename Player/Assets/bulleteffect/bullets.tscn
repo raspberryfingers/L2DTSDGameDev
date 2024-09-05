@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dluyk88qkcsyy"]
+
+[ext_resource type="Texture2D" uid="uid://dxrbwqbarrbgp" path="res://player/Assets/bulleteffect/Bullet_Pixel_16x16_04.png" id="1_ejfdr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtkbr"]
+size = Vector2(14, 4)
+
+[node name="Bullets" type="Area2D"]
+collision_layer = 2
+collision_mask = 14
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ejfdr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wtkbr")

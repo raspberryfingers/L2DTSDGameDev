@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://o6oidifve3he"]
+
+[ext_resource type="Texture2D" uid="uid://qgpfvmlhmsyx" path="res://World/Props/PropAssets/banner-big/banner-big-1.png" id="1_cicg5"]
+[ext_resource type="Texture2D" uid="uid://cdqog1ubeud4i" path="res://World/Props/PropAssets/banner-big/banner-big-2.png" id="2_qce7w"]
+[ext_resource type="Texture2D" uid="uid://cpks1l6oy05bc" path="res://World/Props/PropAssets/banner-big/banner-big-3.png" id="3_2xsb4"]
+[ext_resource type="Texture2D" uid="uid://ctqw4n8wekfsr" path="res://World/Props/PropAssets/banner-big/banner-big-4.png" id="4_5swft"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_curtv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cicg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qce7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2xsb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5swft")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_curtv")
+frame = 1
+frame_progress = 0.654088

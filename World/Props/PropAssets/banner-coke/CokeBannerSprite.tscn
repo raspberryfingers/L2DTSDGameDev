@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://doqnf2a4ymcr4"]
+
+[ext_resource type="Texture2D" uid="uid://phqy8125kl3h" path="res://World/Props/PropAssets/banner-coke/banner-coke-1.png" id="1_a21fy"]
+[ext_resource type="Texture2D" uid="uid://7etcbeoinj61" path="res://World/Props/PropAssets/banner-coke/banner-coke-2.png" id="2_0dfee"]
+[ext_resource type="Texture2D" uid="uid://ceayygrrmnt5i" path="res://World/Props/PropAssets/banner-coke/banner-coke-3.png" id="3_xbnvm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4engl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a21fy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0dfee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xbnvm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_4engl")
+autoplay = "default"

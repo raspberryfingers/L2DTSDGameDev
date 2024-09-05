@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl5v66jswuv8p"]
+
+[ext_resource type="Texture2D" uid="uid://cndfxhflajopw" path="res://World/Props/PropAssets/banner-neon/banner-neon-1.png" id="1_j01bs"]
+[ext_resource type="Texture2D" uid="uid://ctwgdcfxapnsl" path="res://World/Props/PropAssets/banner-neon/banner-neon-2.png" id="2_1n0q3"]
+[ext_resource type="Texture2D" uid="uid://2cl6n1i11bov" path="res://World/Props/PropAssets/banner-neon/banner-neon-3.png" id="3_7pjwe"]
+[ext_resource type="Texture2D" uid="uid://e1pe4i8sihfj" path="res://World/Props/PropAssets/banner-neon/banner-neon-4.png" id="4_75cs7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u168i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j01bs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1n0q3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7pjwe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_75cs7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_u168i")
+autoplay = "default"

@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwu17lbgf1vmf"]
+
+[ext_resource type="Texture2D" uid="uid://cw0ttiwpn1q8p" path="res://World/Props/PropAssets/monitorface/monitor-face-1.png" id="1_nkiua"]
+[ext_resource type="Texture2D" uid="uid://cpwi2ntw1l1be" path="res://World/Props/PropAssets/monitorface/monitor-face-2.png" id="2_ngson"]
+[ext_resource type="Texture2D" uid="uid://dti13t0sm4yp2" path="res://World/Props/PropAssets/monitorface/monitor-face-3.png" id="3_r4ww6"]
+[ext_resource type="Texture2D" uid="uid://cbk44ke0mkrca" path="res://World/Props/PropAssets/monitorface/monitor-face-4.png" id="4_50f6q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_314gm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nkiua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ngson")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r4ww6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_50f6q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_314gm")
+autoplay = "default"

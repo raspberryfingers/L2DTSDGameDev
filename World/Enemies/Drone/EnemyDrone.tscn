@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://vduis8xqi7sg"]
+
+[ext_resource type="Texture2D" uid="uid://dn3oefyvoub6q" path="res://World/Enemies/Drone/drone_flying.png" id="1_yhu1e"]
+[ext_resource type="Texture2D" uid="uid://pmofgkdhd6u2" path="res://World/Enemies/Drone/drone_preview.png" id="2_2uktl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ni60"]
+atlas = ExtResource("1_yhu1e")
+region = Rect2(0, 0, 54, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g462r"]
+atlas = ExtResource("1_yhu1e")
+region = Rect2(54, 0, 54, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_072iw"]
+atlas = ExtResource("2_2uktl")
+region = Rect2(110, 0, 55, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn5kr"]
+atlas = ExtResource("2_2uktl")
+region = Rect2(165, 0, 55, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mxubc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ni60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g462r")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_072iw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn5kr")
+}],
+"loop": true,
+"name": &"turn",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ydow"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e2ygd"]
+radius = 13.0
+
+[node name="DroneCharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mxubc")
+animation = &"fly"
+frame = 1
+frame_progress = 0.486959
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 3)
+shape = SubResource("CircleShape2D_5ydow")
+
+[node name="HurtBoxArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBoxArea2D"]
+position = Vector2(3, 2)
+shape = SubResource("CircleShape2D_e2ygd")

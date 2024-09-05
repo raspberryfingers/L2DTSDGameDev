@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://djnp5kbjygqgt"]
+
+[ext_resource type="Texture2D" uid="uid://cgquknu30xlqp" path="res://World/Props/PropAssets/banner-side/banner-side-1.png" id="1_nh1ov"]
+[ext_resource type="Texture2D" uid="uid://bcr2v5pwlwwdb" path="res://World/Props/PropAssets/banner-side/banner-side-2.png" id="2_rchgq"]
+[ext_resource type="Texture2D" uid="uid://d588t7hpwr2w" path="res://World/Props/PropAssets/banner-side/banner-side-3.png" id="3_ku8i0"]
+[ext_resource type="Texture2D" uid="uid://cah6r7p61ub0m" path="res://World/Props/PropAssets/banner-side/banner-side-4.png" id="4_nrjva"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7d5t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nh1ov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rchgq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ku8i0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nrjva")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_h7d5t")
+autoplay = "default"

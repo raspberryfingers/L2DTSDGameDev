@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://b1si8d0ia1ern"]
+
+[ext_resource type="Texture2D" uid="uid://cv5mpsdiqcnwm" path="res://World/Pickups/Heart/HeartPickuo.png" id="1_andon"]
+[ext_resource type="Script" path="res://World/Pickups/Heart/heart_pickup.gd" id="1_uitd0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljfmj"]
+atlas = ExtResource("1_andon")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn6p7"]
+atlas = ExtResource("1_andon")
+region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m5vq"]
+atlas = ExtResource("1_andon")
+region = Rect2(0, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pruy"]
+atlas = ExtResource("1_andon")
+region = Rect2(0, 96, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgts5"]
+atlas = ExtResource("1_andon")
+region = Rect2(0, 128, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32pc3"]
+atlas = ExtResource("1_andon")
+region = Rect2(0, 160, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vnvcb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljfmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xn6p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m5vq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pruy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgts5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32pc3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h3k3k"]
+radius = 6.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_uitd0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vnvcb")
+autoplay = "default"
+frame_progress = 0.722959
+
+[node name="HealthPickupArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthPickupArea2D"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_h3k3k")
+
+[connection signal="body_entered" from="HealthPickupArea2D" to="." method="_on_health_pickup_area_2d_body_entered"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c36jbux2papem"]
+
+[ext_resource type="Texture2D" uid="uid://cegdho364lt7e" path="res://World/Props/PropAssets/banner-sushi/banner-sushi-1.png" id="1_lpwsn"]
+[ext_resource type="Texture2D" uid="uid://bbumfgxcx8kr7" path="res://World/Props/PropAssets/banner-sushi/banner-sushi-2.png" id="2_ocqng"]
+[ext_resource type="Texture2D" uid="uid://cs0677ohs6136" path="res://World/Props/PropAssets/banner-sushi/banner-sushi-3.png" id="3_smurk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ctxwy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lpwsn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ocqng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_smurk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ctxwy")

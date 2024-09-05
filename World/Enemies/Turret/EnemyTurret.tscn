@@ -1,0 +1,117 @@
+[gd_scene load_steps=15 format=3 uid="uid://8m7mp23c4f4"]
+
+[ext_resource type="Texture2D" uid="uid://1d0k5mdn4ksa" path="res://World/Enemies/Turret/turret-preview.png" id="1_bvfdx"]
+[ext_resource type="Script" path="res://World/Enemies/EnemyStateMachine/Idle.gd" id="2_7hc36"]
+[ext_resource type="Script" path="res://World/Enemies/EnemyStateMachine/StateMachineController.gd" id="2_cx35m"]
+[ext_resource type="Script" path="res://World/Enemies/EnemyStateMachine/StateMachine.gd" id="2_ydnn0"]
+[ext_resource type="Script" path="res://World/Enemies/EnemyStateMachine/Attack.gd" id="4_8x3hn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg6rl"]
+atlas = ExtResource("1_bvfdx")
+region = Rect2(0, 0, 25, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6wcr"]
+atlas = ExtResource("1_bvfdx")
+region = Rect2(25, 0, 25, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8xdn"]
+atlas = ExtResource("1_bvfdx")
+region = Rect2(50, 0, 25, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmt0o"]
+atlas = ExtResource("1_bvfdx")
+region = Rect2(75, 0, 25, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5myv"]
+atlas = ExtResource("1_bvfdx")
+region = Rect2(100, 0, 25, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fh85"]
+atlas = ExtResource("1_bvfdx")
+region = Rect2(125, 0, 25, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6jmsb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg6rl")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg6rl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6wcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8xdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmt0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5myv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fh85")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbrr0"]
+size = Vector2(15, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28c4a"]
+size = Vector2(178, 49)
+
+[node name="TurretCharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6jmsb")
+animation = &"attack"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jbrr0")
+
+[node name="AttackArea2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D"]
+position = Vector2(0, -14.5)
+shape = SubResource("RectangleShape2D_28c4a")
+
+[node name="StateMachineController" type="Node" parent="." node_paths=PackedStringArray("node_finite_state_machine")]
+script = ExtResource("2_cx35m")
+node_finite_state_machine = NodePath("../StateMachine")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("2_ydnn0")
+initial_node_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
+script = ExtResource("2_7hc36")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d", "muzzle", "shoot_timer")]
+script = ExtResource("4_8x3hn")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+muzzle = NodePath("../../MuzzleMarker2D")
+shoot_timer = NodePath("../../ShootTimer")
+
+[node name="MuzzleMarker2D" type="Marker2D" parent="."]
+position = Vector2(-11, -8)
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="AttackArea2D" to="StateMachineController" method="_on_attack_area_2d_body_entered"]
+[connection signal="body_exited" from="AttackArea2D" to="StateMachineController" method="_on_attack_area_2d_body_exited"]
