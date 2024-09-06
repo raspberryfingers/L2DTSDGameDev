@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://pususwmlctm0"]
+[gd_scene load_steps=4 format=3 uid="uid://pususwmlctm0"]
 
 [ext_resource type="TileSet" uid="uid://d28tjk5w5eytw" path="res://World/world-tileset.tres" id="1_vn3sk"]
-[ext_resource type="Texture2D" uid="uid://b2jn7ctbrn6sw" path="res://World/Props/PropAssets/hotel-sign.png" id="1_yucf7"]
 [ext_resource type="PackedScene" uid="uid://sl7omioy7phi" path="res://Player/2ndPlayerScript.tscn" id="2_hcvpe"]
 [ext_resource type="PackedScene" uid="uid://dbluolsggb5og" path="res://World/parallax_background.tscn" id="2_osp1o"]
 
@@ -11,7 +10,6 @@
 
 [node name="Hotel-sign" type="Sprite2D" parent="_Background_"]
 position = Vector2(284, 127)
-texture = ExtResource("1_yucf7")
 
 [node name="TileMap" type="TileMap" parent="_Background_"]
 position = Vector2(0, 104)

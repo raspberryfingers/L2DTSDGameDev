@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # Upload scenes outside of node 
 var bullet = preload("res://player/Assets/bulleteffect/bullet_3.tscn")
-var player_death_effect = preload("res://Player/PlayerDeath/PlayerDeathEffect.tscn")
+var player_death_effect = preload("res://Player/PlayerDeath/player_death_effect.tscn")
 
 # A reference to the AnimatedSprite2D, Marker2D, Timer nodes 
 @onready var animated_sprite_2d = $AnimatedSprite2D

@@ -1,6 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://w7en7g743evq"]
-
-[ext_resource type="FontFile" uid="uid://b10uvsj1044em" path="res://GUI/Fonts/PixelEmulator-xq08.ttf" id="1_krita"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://w7en7g743evq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mfgn"]
 bg_color = Color(0.1696, 0.29574, 0.53, 1)
@@ -87,7 +85,7 @@ bg_color = Color(0, 0, 0.141176, 0.623529)
 
 [resource]
 Button/font_sizes/font_size = 20
-Button/fonts/font = ExtResource("1_krita")
+Button/fonts/font = null
 Button/styles/disabled = SubResource("StyleBoxFlat_0mfgn")
 Button/styles/focus = SubResource("StyleBoxFlat_5kf7l")
 Button/styles/hover = SubResource("StyleBoxFlat_xwvgk")
@@ -95,7 +93,7 @@ Button/styles/normal = SubResource("StyleBoxFlat_1ws2q")
 Button/styles/pressed = SubResource("StyleBoxFlat_aw2m0")
 HBoxContainer/constants/separation = 30
 LineEdit/font_sizes/font_size = 20
-LineEdit/fonts/font = ExtResource("1_krita")
+LineEdit/fonts/font = null
 LineEdit/styles/focus = SubResource("StyleBoxFlat_33o3g")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_d6k7e")
 LineEdit/styles/read_only = SubResource("StyleBoxFlat_eiwrp")
