@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca8s524w8xnda"]
+
+[ext_resource type="Script" path="res://World/Props/Ladder/Ladder.gd" id="1_5rifc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2by7m"]
+
+[node name="LadderArea2D" type="Area2D"]
+script = ExtResource("1_5rifc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2by7m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

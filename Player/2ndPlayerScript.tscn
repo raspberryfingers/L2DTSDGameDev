@@ -509,7 +509,7 @@ shape = SubResource("RectangleShape2D_toy1a")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
 material = SubResource("ShaderMaterial_kp18c")
 sprite_frames = SubResource("SpriteFrames_g7hym")
-animation = &"jump"
+animation = &"run"
 autoplay = "idle"
 
 [node name="Muzzle" type="Marker2D" parent="."]

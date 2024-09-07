@@ -62,7 +62,7 @@ func player_idle(_delta : float):
 
 # Climb state conditions 
 func player_climbing(delta: float):
-	if on_ladder:
+	if on_ladder == true:
 		if Input.is_action_pressed("climb_down"):
 			velocity.y = speed * delta * 10
 			if velocity.y > 0:

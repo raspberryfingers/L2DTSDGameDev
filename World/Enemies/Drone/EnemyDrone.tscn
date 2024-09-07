@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://vduis8xqi7sg"]
+[gd_scene load_steps=12 format=3 uid="uid://vduis8xqi7sg"]
 
+[ext_resource type="Script" path="res://World/Enemies/Drone/EnemyDrone.gd" id="1_lf445"]
 [ext_resource type="Texture2D" uid="uid://dn3oefyvoub6q" path="res://World/Enemies/Drone/drone_flying.png" id="1_yhu1e"]
 [ext_resource type="Texture2D" uid="uid://pmofgkdhd6u2" path="res://World/Enemies/Drone/drone_preview.png" id="2_2uktl"]
 
@@ -50,13 +51,17 @@ radius = 13.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2ygd"]
 radius = 13.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_grk8g"]
+radius = 75.5381
+
 [node name="DroneCharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_lf445")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mxubc")
 animation = &"fly"
 frame = 1
-frame_progress = 0.486959
+frame_progress = 0.764832
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, 3)
@@ -67,3 +72,20 @@ shape = SubResource("CircleShape2D_5ydow")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBoxArea2D"]
 position = Vector2(3, 2)
 shape = SubResource("CircleShape2D_e2ygd")
+
+[node name="WaitTimer" type="Timer" parent="."]
+
+[node name="AttackArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D"]
+shape = SubResource("CircleShape2D_grk8g")
+debug_color = Color(0.963201, 0.02718, 0.484247, 0.42)
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="HurtBoxArea2D" to="." method="_on_hurt_box_area_2d_area_entered"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
+[connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

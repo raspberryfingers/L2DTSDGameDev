@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://cfvlmq5wy0p0i"]
+
+[ext_resource type="Script" path="res://DoneExplosion.gd" id="1_y63og"]
+[ext_resource type="Texture2D" uid="uid://cqae654d5jhgt" path="res://World/Enemies/Drone/DroneAttack/spritesheet.png" id="2_17bfw"]
+[ext_resource type="Script" path="res://World/Enemies/HitboxArea2D.gd" id="3_y3tat"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3kkk"]
+atlas = ExtResource("2_17bfw")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti78d"]
+atlas = ExtResource("2_17bfw")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oucc"]
+atlas = ExtResource("2_17bfw")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bulrt"]
+atlas = ExtResource("2_17bfw")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj6dg"]
+atlas = ExtResource("2_17bfw")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7ejl"]
+atlas = ExtResource("2_17bfw")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cr3a1"]
+atlas = ExtResource("2_17bfw")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_43gwq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3kkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti78d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oucc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bulrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj6dg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7ejl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cr3a1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hdl8t"]
+radius = 18.0
+
+[node name="DroneAttackNode2D" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_y63og")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_43gwq")
+frame = 3
+frame_progress = 0.599753
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="ExplosionArea2D" type="Area2D" parent="."]
+script = ExtResource("3_y3tat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea2D"]
+shape = SubResource("CircleShape2D_hdl8t")

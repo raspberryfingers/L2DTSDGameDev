@@ -65,6 +65,8 @@ autoplay = "default"
 frame_progress = 0.722959
 
 [node name="HealthPickupArea2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HealthPickupArea2D"]
 position = Vector2(0, -1)
