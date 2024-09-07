@@ -2,8 +2,12 @@ extends CanvasLayer
 
 
 func _on_start_button_pressed():
-	get_tree().change_scene_to_file("res://StartMenu/start_menu_screen.tscn")
+	GameManager.start_game()
 
 
 func _on_quit_button_pressed():
 	GameManager.exit_game()
+
+
+func _on_settings_button_pressed():
+	GameManager.settings_menu()

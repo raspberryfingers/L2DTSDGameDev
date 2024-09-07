@@ -13,6 +13,7 @@ default_value_enabled = true
 input_name = "color"
 
 [sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_wc2is"]
+default_input_values = [0, 0.0, 1, 1.0, 2, 1e-05, 3, Vector3(0, 0, 0), 4, Vector3(0, 0, 0), 5, Vector3(0, 0, 0)]
 
 [resource]
 code = "shader_type canvas_item;
@@ -38,7 +39,7 @@ void fragment() {
 
 	vec3 n_out5p0;
 // If:5
-	float n_in5p1 = 0.00000;
+	float n_in5p1 = 1.00000;
 	float n_in5p2 = 0.00001;
 	if(abs((n_out3p0 ? 1.0 : 0.0) - n_in5p1) < n_in5p2)
 	{
@@ -60,14 +61,14 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-196.115, -142.848)
+graph_offset = Vector2(-250.694, -96.7219)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(840, 60)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_0ij8b")
 nodes/fragment/2/position = Vector2(-240, 140)
 nodes/fragment/3/node = SubResource("VisualShaderNodeBooleanParameter_t2xx8")
-nodes/fragment/3/position = Vector2(-240, -220)
+nodes/fragment/3/position = Vector2(-200, -420)
 nodes/fragment/4/node = SubResource("VisualShaderNodeInput_nws1s")
 nodes/fragment/4/position = Vector2(-340, 540)
 nodes/fragment/5/node = SubResource("VisualShaderNodeIf_wc2is")

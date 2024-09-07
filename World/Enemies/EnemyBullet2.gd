@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends CharacterBody2D
 
 var bullet_impact_effect = preload("res://Player/Assets/bulleteffect/Bullet Impact/bullet_impact_effect.tscn")
 
@@ -21,12 +21,14 @@ func _on_hitbox_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
 		print("bullet body entered")
 		bullet_impact() 
+		var damage_amount : int = 1
 
 
 func _on_hitbox_area_2d_area_entered(area):
 	if area.is_in_group("Player"):
 		print("bullet body entered")
 		bullet_impact() 
+		var damage_amount : int = 1
 
 	
 func get_damage_amount() -> int: 

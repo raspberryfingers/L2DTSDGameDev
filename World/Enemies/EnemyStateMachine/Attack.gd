@@ -16,17 +16,11 @@ func on_process(delta : float):
 	 
 # Called every physics frame, used for physics-related updates.
 func on_physics_process(delta : float):
-	if player:
-		# Shoot immediately if it's the first shot
-		if not has_shot:
-			shoot_bullet()
-			has_shot = true
-			shoot_timer.start(0.4)  # Start the timer for the next shot
-		
-		# Check if the timer has expired for subsequent shots
-		elif shoot_timer.time_left == 0:
-			shoot_bullet()
-			shoot_timer.start(0.4)  # Restart the timer for the next shot
+	if player and not has_shot:
+		shoot_bullet()
+		has_shot = true
+		shoot_timer.start(2)  # Start the timer for the next shot
+
 
 func shoot_bullet():
 	var direction : int 
@@ -58,4 +52,9 @@ func enter():
 	has_shot = false  # Reset the shooting flag
 
 func exit(): 
-	pass
+	shoot_timer.stop()
+
+
+func _on_shoot_timer_timeout():
+	shoot_bullet()
+	shoot_timer.start(2)

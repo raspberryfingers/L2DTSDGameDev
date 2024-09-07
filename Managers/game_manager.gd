@@ -3,6 +3,7 @@ extends Node
 var main_menu_screen = preload("res://GUI/GUIMenuScenes/main_menu_screen.tscn")
 var pause_menu_screen = preload("res://GUI/GUIMenuScenes/escape_menu.tscn")
 var level_1 = preload("res://World/Level1/level_one.tscn")
+var settings_menu_screen = preload("res://GUI/GUIMenuScenes/settings_menu.tscn")
 
 
 func start_game():
@@ -25,6 +26,10 @@ func continue_game():
 func main_menu():
 	var main_menu_screen_instance = main_menu_screen.instantiate()
 	get_tree().get_root().add_child(main_menu_screen_instance)
+	
+func settings_menu(): 
+	var settings_menu_screen_instance = settings_menu_screen.instantiate() 
+	get_tree().get_root().add_child(settings_menu_screen_instance)
 
 
 func transition_to_scene(scene_path):

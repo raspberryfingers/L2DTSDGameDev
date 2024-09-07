@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bh2x618b8yrod"]
+
+[ext_resource type="Script" path="res://World/Enemies/EnemyBullet2.gd" id="1_v1wqa"]
+[ext_resource type="Texture2D" uid="uid://dxrbwqbarrbgp" path="res://Player/Assets/bulleteffect/Bullet_Pixel_16x16_04.png" id="2_l3kda"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cptpv"]
+size = Vector2(14, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7yeqs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l3kda")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gnms5"]
+size = Vector2(14, 4)
+
+[node name="BulletCharacterBody2D" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_v1wqa")
+
+[node name="HitboxArea2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea2D"]
+shape = SubResource("RectangleShape2D_cptpv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7yeqs")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gnms5")
+
+[connection signal="area_entered" from="HitboxArea2D" to="." method="_on_hitbox_area_2d_area_entered"]
+[connection signal="body_entered" from="HitboxArea2D" to="." method="_on_hitbox_area_2d_body_entered"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=7 format=3 uid="uid://c48cdcowrojdy"]
+
+[ext_resource type="Script" path="res://GUI/OnScreen/Healthbar.gd" id="1_jj5ji"]
+[ext_resource type="Texture2D" uid="uid://dopwl46nu2hxm" path="res://GUI/OnScreen/06-1.png.png" id="2_0w51j"]
+[ext_resource type="Texture2D" uid="uid://buplfmsfbqcna" path="res://GUI/OnScreen/06-2.png.png" id="3_d72bd"]
+[ext_resource type="Texture2D" uid="uid://cut72jwrbv2g5" path="res://GUI/OnScreen/06-3.png.png" id="4_vgj8l"]
+[ext_resource type="Texture2D" uid="uid://87aspuyqfq5p" path="res://GUI/OnScreen/06-4.png.png" id="5_bmqy7"]
+[ext_resource type="Texture2D" uid="uid://b372atyhy1xtl" path="res://GUI/OnScreen/06-5.png.png" id="6_rfh6y"]
+
+[node name="Healthbar" type="Node2D"]
+script = ExtResource("1_jj5ji")
+full = ExtResource("2_0w51j")
+three_quaters = ExtResource("3_d72bd")
+half = ExtResource("4_vgj8l")
+quater = ExtResource("5_bmqy7")
+empty = ExtResource("6_rfh6y")
+
+[node name="Bar" type="Sprite2D" parent="."]
+position = Vector2(21, 5)
+texture = ExtResource("2_0w51j")

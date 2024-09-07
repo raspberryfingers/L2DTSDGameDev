@@ -200,3 +200,13 @@ func _on_hurtbox_body_entered(body : Node2D):
 				
 	if HealthManager.current_health < 1: 
 		player_death()
+		
+func _on_hurtbox_area_entered(area : Node2D):
+	print("Hurtbox entered")
+	if area.is_in_group("Enemy"):
+		print("Enemy Entered ", area.damage_amount)
+		hit_animation_player.play("hit")
+		HealthManager.decrease_health(area.damage_amount) 
+				
+	if HealthManager.current_health < 1: 
+		player_death()

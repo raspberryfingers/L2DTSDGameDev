@@ -113,3 +113,4 @@ text = " Settings "
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
