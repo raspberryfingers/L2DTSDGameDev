@@ -16,6 +16,7 @@ var player_death_effect = preload("res://Player/PlayerDeath/player_death_effect.
 @export var jump: float = -500
 @export var jump_horizontal_speed: int = 1000
 @export var max_jump_horizontal_speed: int = 300 
+@export var crouch_muzzle_offset: Vector2 = Vector2(0, 18)
 
 # Handle states 
 enum State { Idle, Run, Jump, Shoot, Fall, Crouch, Climb_Down, Climb_Up }
@@ -49,16 +50,19 @@ func _physics_process(delta : float):
 	
 	player_animations()
 
+
 # Fall state conditions  
 func player_falling(delta : float): 
 	if not is_on_floor() and !on_ladder:
 		velocity.y += gravity * delta
+
 
 # Idle state conditions		
 func player_idle(_delta : float): 
 	if is_on_floor() and current_state != State.Shoot:
 		current_state = State.Idle  
 		print("State changed to: Idle")
+
 
 # Climb state conditions 
 func player_climbing(delta: float):
@@ -74,6 +78,7 @@ func player_climbing(delta: float):
 			velocity.y = 0
 
 		print("on ladder")
+
 
 # Run state conditions 		
 func player_run(delta : float):
@@ -96,6 +101,7 @@ func player_run(delta : float):
 	else:
 		velocity.y = 0
 
+
 # Jump state conditions 		
 func player_jump(delta): 
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
@@ -109,17 +115,18 @@ func player_jump(delta):
 		velocity.x += direction * jump_horizontal_speed * delta 
 		velocity.x = clamp(velocity.x, -max_jump_horizontal_speed, max_jump_horizontal_speed)
 
+
 func player_crouch(_delta : float): 
 	if is_on_floor() and Input.is_action_pressed("crouch"): 
 		current_state = State.Crouch
 		print("State changed to: Crouch")
+
 
 # Play the bullet scene when conditions met 
 func player_shooting(delta : float): 
 	var direction = input_movement()
 	if direction:
 		last_direction = direction
-
 	if Input.is_action_just_pressed("shoot"):
 		var bullet_instance = bullet.instantiate() as Node2D
 		# Use the last direction if no input
@@ -129,6 +136,7 @@ func player_shooting(delta : float):
 		current_state = State.Shoot
 		shoot_timer.start(0.4)
 		print("State changed to: Shoot")
+
 
 # When shoot timer runs out change state unless shooting again 
 func _on_shoot_timer_timeout():
@@ -140,6 +148,7 @@ func _on_shoot_timer_timeout():
 		else: 
 			current_state = State.Run 
 
+
 # Muzzle direction to flip if the player also flips (direction)  
 func player_muzzle_position():
 	var direction = input_movement()
@@ -148,15 +157,24 @@ func player_muzzle_position():
 		muzzle.position.x = muzzle_position.x 
 	elif direction < 0: 
 		muzzle.position.x = -muzzle_position.x 
-		
+	
+	# Adjust muzzle height based on crouch state
+	if current_state == State.Crouch:
+		muzzle.position.y = muzzle_position.y + crouch_muzzle_offset.y
+	else:
+		muzzle.position.y = muzzle_position.y
+
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if "Player" in body.name: 
 		on_ladder = true
 
+
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if "Player" in body.name: 
 		on_ladder = false 
-	
+
+
 # Animation control  
 func player_animations():
 	if current_state == State.Idle and velocity.x == 0 and velocity.y == 0:
@@ -179,17 +197,20 @@ func player_animations():
 	# Fall animation to play when falling from jump but state still = jump 
 	elif velocity.y > 0: 
 		animated_sprite_2d.play("fall")
-		
+
+
 func player_death(): 
 	var player_death_effect_instance = player_death_effect.instantiate() as Node2D 
 	player_death_effect_instance.global_position = global_position
 	get_parent().add_child(player_death_effect_instance)
 	queue_free()
 
+
 # Direction = input movement 
 func input_movement(): 
 	var direction : float = Input.get_axis("move_left", "move_right")
 	return direction 
+
 
 func _on_hurtbox_body_entered(body : Node2D):
 	print("Hurtbox entered")
@@ -200,7 +221,8 @@ func _on_hurtbox_body_entered(body : Node2D):
 				
 	if HealthManager.current_health < 1: 
 		player_death()
-		
+
+
 func _on_hurtbox_area_entered(area : Node2D):
 	print("Hurtbox entered")
 	if area.is_in_group("Enemy"):

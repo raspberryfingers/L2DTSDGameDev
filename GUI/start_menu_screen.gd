@@ -11,4 +11,4 @@ func _on_new_game_button_pressed():
 
 
 func _on_main_menu_button_pressed():
-	pass # Replace with function body.
+	GameManager.main_menu()

@@ -5,14 +5,17 @@ var enemy_attack_effect = preload("res://World/Enemies/Drone/DroneAttack/drone_e
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var patrol_points : Node = $PatrolPoints
-@onready var timer = $Timer
+@onready var wait_timer : Timer = $WaitTimer
+@onready var attack_timer : Timer = $AttackTimer
 @onready var hurtbox : Area2D = $HurtBox
 @onready var attack_area : Area2D = $AttackArea  # The area that detects the player
 @onready var player : Node2D = null
+@onready var animation_player = $AnimationPlayer
 
 
 @export var health_amount : int = 3  
 @export var speed: float = 750 
+@export var chase_speed : float = 1500
 @export var wait_time : int = 3 
 @export var explosion_delay : float = 3.0  # Time before the drone explodes when chasing
 
@@ -38,7 +41,8 @@ func _ready():
 	else: 
 		print("No patrol points")
 		
-	timer.wait_time = wait_time
+	wait_timer.wait_time = wait_time
+	
 	current_state = State.Idle 
 	print("Initial state: Idle")
 
@@ -84,24 +88,19 @@ func enemy_walk(delta : float):
 			direction = Vector2.LEFT 
 			
 		can_walk = false 
-		timer.start() 
+		wait_timer.start() 
 		print("Timer started, current point position: ", current_point_position)
 
 func enemy_chase(delta: float):
 	if player != null:
+		animation_player.play("detinate")
+		
 		direction = (player.global_position - global_position).normalized()
-		velocity = direction * speed * delta
+		velocity = direction * chase_speed * delta
 
 		# Flip sprite to face the player
 		animated_sprite_2d.flip_h = direction.x > 0 
 		print("Chasing player")
-
-func _on_timer_timeout():
-	if current_state == State.Chase:
-		explode()
-	elif current_state == State.Explode:
-		# After explosion, you may want to reset or stop other processes
-		pass
 
 func _on_hurt_box_area_2d_area_entered(area):
 	print("Hurtbox entered")
@@ -111,14 +110,13 @@ func _on_hurt_box_area_2d_area_entered(area):
 		print("Health amount: ", health_amount) 
 		
 		if health_amount <= 0:
-			explode()
+			enemy_death()
 
 func _on_attack_area_2d_body_entered(body : Node2D):
 	if body.is_in_group("Player"):
 		player = body
 		current_state = State.Chase
-		timer.wait_time = explosion_delay
-		timer.start()
+		attack_timer.start(5.9)
 		print("Player detected, starting chase")
 
 func _on_attack_area_2d_body_exited(body : Node2D):
@@ -127,8 +125,8 @@ func _on_attack_area_2d_body_exited(body : Node2D):
 		if current_state == State.Chase:
 			current_state = State.Explode
 			# Reset the timer to trigger explosion
-			timer.wait_time = explosion_delay
-			timer.start()
+			attack_timer.wait_time = explosion_delay
+			attack_timer.start(5.9)
 			print("Player exited attack area, starting explosion timer")
 
 func explode():
@@ -156,4 +154,10 @@ func enemy_animations():
 		animated_sprite_2d.play("fly")
 
 
+func _on_wait_timer_timeout():
+	can_walk = true 
+	print("Timer timeout, can walk set to true")
 
+
+func _on_attack_timer_timeout():
+	explode()

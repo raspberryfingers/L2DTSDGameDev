@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://pususwmlctm0"]
+[gd_scene load_steps=13 format=3 uid="uid://pususwmlctm0"]
 
 [ext_resource type="TileSet" uid="uid://d28tjk5w5eytw" path="res://World/world-tileset.tres" id="1_vn3sk"]
 [ext_resource type="PackedScene" uid="uid://sl7omioy7phi" path="res://Player/2ndPlayerScript.tscn" id="2_hcvpe"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://World/Props/Ladder/Ladder.gd" id="2_ug4as"]
 [ext_resource type="PackedScene" uid="uid://8m7mp23c4f4" path="res://World/Enemies/Turret/EnemyTurret.tscn" id="2_wuajk"]
 [ext_resource type="Script" path="res://World/PlayerCamera2D.gd" id="4_un0o3"]
+[ext_resource type="PackedScene" uid="uid://vduis8xqi7sg" path="res://World/Enemies/Drone/EnemyDrone.tscn" id="4_x3i34"]
+[ext_resource type="PackedScene" uid="uid://xgumpbld4suu" path="res://World/Pickups/Coin/coin_node_2d.tscn" id="5_4t603"]
 [ext_resource type="PackedScene" uid="uid://b8nyx53clsrgy" path="res://GUI/game_screen.tscn" id="6_nhkfr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyv1n"]
@@ -67,39 +69,63 @@ shape = SubResource("RectangleShape2D_tpmp2")
 
 [node name="_Enemies_" type="Node" parent="."]
 
-[node name="TurretCharacterBody2D" parent="_Enemies_" instance=ExtResource("2_wuajk")]
+[node name="_Turrets_" type="Node" parent="_Enemies_"]
+
+[node name="TurretCharacterBody2D" parent="_Enemies_/_Turrets_" instance=ExtResource("2_wuajk")]
 position = Vector2(589, 237)
 
-[node name="TurretCharacterBody2D2" parent="_Enemies_" instance=ExtResource("2_wuajk")]
+[node name="TurretCharacterBody2D2" parent="_Enemies_/_Turrets_" instance=ExtResource("2_wuajk")]
 position = Vector2(588, 45)
 
-[node name="TurretCharacterBody2D3" parent="_Enemies_" instance=ExtResource("2_wuajk")]
+[node name="TurretCharacterBody2D3" parent="_Enemies_/_Turrets_" instance=ExtResource("2_wuajk")]
 position = Vector2(919, 141)
 
-[node name="TurretCharacterBody2D4" parent="_Enemies_" instance=ExtResource("2_wuajk")]
+[node name="TurretCharacterBody2D4" parent="_Enemies_/_Turrets_" instance=ExtResource("2_wuajk")]
 position = Vector2(1186, 333)
 
-[node name="TurretCharacterBody2D5" parent="_Enemies_" instance=ExtResource("2_wuajk")]
+[node name="TurretCharacterBody2D5" parent="_Enemies_/_Turrets_" instance=ExtResource("2_wuajk")]
 position = Vector2(1991, -4)
 
-[node name="TurretCharacterBody2D6" parent="_Enemies_" instance=ExtResource("2_wuajk")]
+[node name="TurretCharacterBody2D6" parent="_Enemies_/_Turrets_" instance=ExtResource("2_wuajk")]
 position = Vector2(2009, 109)
 
-[node name="TurretCharacterBody2D7" parent="_Enemies_" instance=ExtResource("2_wuajk")]
+[node name="TurretCharacterBody2D7" parent="_Enemies_/_Turrets_" instance=ExtResource("2_wuajk")]
 position = Vector2(2009, 221)
 
-[node name="TurretCharacterBody2D8" parent="_Enemies_" instance=ExtResource("2_wuajk")]
+[node name="TurretCharacterBody2D8" parent="_Enemies_/_Turrets_" instance=ExtResource("2_wuajk")]
 position = Vector2(2829, 237)
 
-[node name="TurretCharacterBody2D9" parent="_Enemies_" instance=ExtResource("2_wuajk")]
+[node name="TurretCharacterBody2D9" parent="_Enemies_/_Turrets_" instance=ExtResource("2_wuajk")]
 position = Vector2(249, 333)
 
+[node name="_Drones_" type="Node" parent="_Enemies_"]
+
+[node name="DroneCharacterBody2D" parent="_Enemies_/_Drones_" instance=ExtResource("4_x3i34")]
+position = Vector2(690, 311)
+
+[node name="PatrolPoints" type="Node" parent="_Enemies_/_Drones_/DroneCharacterBody2D"]
+
+[node name="PatrolPoint" type="Marker2D" parent="_Enemies_/_Drones_/DroneCharacterBody2D/PatrolPoints"]
+position = Vector2(630, 311)
+
+[node name="PatrolPoint2" type="Marker2D" parent="_Enemies_/_Drones_/DroneCharacterBody2D/PatrolPoints"]
+position = Vector2(750, 311)
+
 [node name="_Pickups_" type="Node" parent="."]
+
+[node name="CoinNode2D" parent="_Pickups_" instance=ExtResource("5_4t603")]
+position = Vector2(374, 315)
+
+[node name="CoinNode2D2" parent="_Pickups_" instance=ExtResource("5_4t603")]
+position = Vector2(431, 315)
+
+[node name="CoinNode2D3" parent="_Pickups_" instance=ExtResource("5_4t603")]
+position = Vector2(484, 315)
 
 [node name="_Player_" type="Node" parent="."]
 
 [node name="CharacterBody2D" parent="_Player_" instance=ExtResource("2_hcvpe")]
-position = Vector2(33, 308)
+position = Vector2(31, 308)
 
 [node name="Camera2D" type="Camera2D" parent="_Player_" node_paths=PackedStringArray("player")]
 position = Vector2(144, 278)

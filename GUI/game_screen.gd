@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var collectable_lable = $MarginContainer/VBoxContainer/HBoxContainer/Control/Sprite2D/Label
+@onready var collectable_lable = $MarginContainer/VBoxContainer/HBoxContainer/Control/CollectableLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,8 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://vduis8xqi7sg"]
+[gd_scene load_steps=17 format=3 uid="uid://vduis8xqi7sg"]
 
 [ext_resource type="Script" path="res://World/Enemies/Drone/EnemyDrone.gd" id="1_lf445"]
 [ext_resource type="Texture2D" uid="uid://dn3oefyvoub6q" path="res://World/Enemies/Drone/drone_flying.png" id="1_yhu1e"]
 [ext_resource type="Texture2D" uid="uid://pmofgkdhd6u2" path="res://World/Enemies/Drone/drone_preview.png" id="2_2uktl"]
+[ext_resource type="Shader" uid="uid://bow2dmsu0p4ag" path="res://World/Enemies/Drone/BlowUp.tres" id="2_3tx78"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mc46j"]
+shader = ExtResource("2_3tx78")
+shader_parameter/enabled = true
+shader_parameter/detinate_colour = Color(0.76, 0, 0.164667, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ni60"]
 atlas = ExtResource("1_yhu1e")
@@ -54,10 +60,49 @@ radius = 13.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_grk8g"]
 radius = 75.5381
 
+[sub_resource type="Animation" id="Animation_joi0j"]
+resource_name = "detinate"
+length = 6.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.55, 2, 2.5, 3, 3.4, 3.8, 4.2, 4.5, 4.8, 5.1, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 5.98, 5.99, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_12o87"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gayks"]
+_data = {
+"RESET": SubResource("Animation_12o87"),
+"detinate": SubResource("Animation_joi0j")
+}
+
 [node name="DroneCharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_lf445")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_mc46j")
 sprite_frames = SubResource("SpriteFrames_mxubc")
 animation = &"fly"
 frame = 1
@@ -76,12 +121,19 @@ shape = SubResource("CircleShape2D_e2ygd")
 [node name="WaitTimer" type="Timer" parent="."]
 
 [node name="AttackArea2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D"]
 shape = SubResource("CircleShape2D_grk8g")
 debug_color = Color(0.963201, 0.02718, 0.484247, 0.42)
 
 [node name="AttackTimer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gayks")
+}
 
 [connection signal="area_entered" from="HurtBoxArea2D" to="." method="_on_hurt_box_area_2d_area_entered"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_timer_timeout"]

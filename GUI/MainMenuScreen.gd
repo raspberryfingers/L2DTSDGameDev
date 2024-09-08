@@ -2,7 +2,7 @@ extends CanvasLayer
 
 
 func _on_start_button_pressed():
-	GameManager.start_game()
+	GameManager.start_menu()
 
 
 func _on_quit_button_pressed():
