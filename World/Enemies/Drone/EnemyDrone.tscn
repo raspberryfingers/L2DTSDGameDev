@@ -99,6 +99,7 @@ _data = {
 }
 
 [node name="DroneCharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(0.75, 0.75)
 script = ExtResource("1_lf445")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

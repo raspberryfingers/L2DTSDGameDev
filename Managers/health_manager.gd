@@ -2,7 +2,7 @@ extends Node
 
 var player_death_effect = preload("res://Player/PlayerDeath/player_death_effect.tscn")
 
-var max_health : int = 8  
+var max_health : int = 8 
 var current_health : int 
 
 signal on_health_changed 

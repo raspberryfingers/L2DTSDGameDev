@@ -29,9 +29,6 @@ func _on_hitbox_area_2d_area_entered(area):
 		bullet_impact() 
 
 	
-func get_damage_amount() -> int: 
-	return damage_amount 
-	
 func bullet_impact():
 	var bullet_impact_effect_instance = bullet_impact_effect.instantiate() as Node2D
 	bullet_impact_effect_instance.global_position = global_position 

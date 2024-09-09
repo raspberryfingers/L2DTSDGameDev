@@ -220,7 +220,7 @@ func _on_hurtbox_body_entered(body : Node2D):
 		hit_animation_player.play("hit")
 		HealthManager.decrease_health(body.damage_amount) 
 				
-	if HealthManager.current_health < 1: 
+	if HealthManager.current_health <= 0: 
 		player_death()
 
 
@@ -231,5 +231,5 @@ func _on_hurtbox_area_entered(area : Node2D):
 		hit_animation_player.play("hit")
 		HealthManager.decrease_health(area.damage_amount) 
 				
-	if HealthManager.current_health < 1: 
+	if HealthManager.current_health <= 0: 
 		player_death()
