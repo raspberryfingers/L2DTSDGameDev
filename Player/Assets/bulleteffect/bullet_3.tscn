@@ -8,9 +8,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_i4qci")
-}, {
-"duration": 1.0,
-"texture": null
 }],
 "loop": true,
 "name": &"shot",

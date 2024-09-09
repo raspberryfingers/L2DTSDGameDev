@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://8m7mp23c4f4"]
+[gd_scene load_steps=16 format=3 uid="uid://8m7mp23c4f4"]
 
 [ext_resource type="Texture2D" uid="uid://1d0k5mdn4ksa" path="res://World/Enemies/Turret/turret-preview.png" id="1_bvfdx"]
+[ext_resource type="Script" path="res://World/Enemies/Turret/EnemyTurret.gd" id="1_etdj6"]
 [ext_resource type="Script" path="res://World/Enemies/EnemyStateMachine/Idle.gd" id="2_7hc36"]
 [ext_resource type="Script" path="res://World/Enemies/EnemyStateMachine/StateMachineController.gd" id="2_cx35m"]
 [ext_resource type="Script" path="res://World/Enemies/EnemyStateMachine/StateMachine.gd" id="2_ydnn0"]
@@ -72,7 +73,11 @@ size = Vector2(15, 23)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_28c4a"]
 size = Vector2(178, 49)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uinev"]
+size = Vector2(16, 22)
+
 [node name="TurretCharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_etdj6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6jmsb")
@@ -83,7 +88,7 @@ autoplay = "idle"
 shape = SubResource("RectangleShape2D_jbrr0")
 
 [node name="AttackArea2D" type="Area2D" parent="."]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D"]
@@ -115,6 +120,14 @@ position = Vector2(-11, -8)
 
 [node name="ShootTimer" type="Timer" parent="."]
 
+[node name="HurtBoxArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxArea2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_uinev")
+
 [connection signal="body_entered" from="AttackArea2D" to="StateMachineController" method="_on_attack_area_2d_body_entered"]
 [connection signal="body_exited" from="AttackArea2D" to="StateMachineController" method="_on_attack_area_2d_body_exited"]
 [connection signal="timeout" from="ShootTimer" to="StateMachine/Attack" method="_on_shoot_timer_timeout"]
+[connection signal="area_entered" from="HurtBoxArea2D" to="." method="_on_hurt_box_area_2d_area_entered"]
+[connection signal="body_entered" from="HurtBoxArea2D" to="." method="_on_hurt_box_area_2d_body_entered"]

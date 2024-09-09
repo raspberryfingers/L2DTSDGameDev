@@ -60,6 +60,21 @@ radius = 13.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_grk8g"]
 radius = 75.5381
 
+[sub_resource type="Animation" id="Animation_12o87"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_joi0j"]
 resource_name = "detinate"
 length = 6.0
@@ -75,21 +90,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
-}
-
-[sub_resource type="Animation" id="Animation_12o87"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gayks"]
@@ -121,8 +121,8 @@ shape = SubResource("CircleShape2D_e2ygd")
 [node name="WaitTimer" type="Timer" parent="."]
 
 [node name="AttackArea2D" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 6
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D"]
 shape = SubResource("CircleShape2D_grk8g")
@@ -136,8 +136,8 @@ libraries = {
 }
 
 [connection signal="area_entered" from="HurtBoxArea2D" to="." method="_on_hurt_box_area_2d_area_entered"]
-[connection signal="timeout" from="WaitTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
 [connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

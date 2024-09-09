@@ -42,7 +42,6 @@ script = ExtResource("2_ug4as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_Background_/_Ladders_/LadderArea2D"]
 position = Vector2(0, 1.16821)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_jyv1n")
 
 [node name="LadderArea2D2" type="Area2D" parent="_Background_/_Ladders_"]
@@ -53,7 +52,6 @@ script = ExtResource("2_ug4as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_Background_/_Ladders_/LadderArea2D2"]
 position = Vector2(0, -1.60626)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_jto3x")
 
 [node name="LadderArea2D3" type="Area2D" parent="_Background_/_Ladders_"]
@@ -64,7 +62,6 @@ script = ExtResource("2_ug4as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_Background_/_Ladders_/LadderArea2D3"]
 position = Vector2(0, -1.16819)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_tpmp2")
 
 [node name="_Enemies_" type="Node" parent="."]

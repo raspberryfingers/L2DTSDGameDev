@@ -119,6 +119,7 @@ func player_jump(delta):
 func player_crouch(_delta : float): 
 	if is_on_floor() and Input.is_action_pressed("crouch"): 
 		current_state = State.Crouch
+		velocity.x = 0
 		print("State changed to: Crouch")
 
 
