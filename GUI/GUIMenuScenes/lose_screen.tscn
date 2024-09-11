@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://b0pxo4k71dut0"]
+
+[node name="LoseScreenCanvasLayer" type="CanvasLayer"]

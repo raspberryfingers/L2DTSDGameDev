@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dt84qog1fcht7"]
 
-[ext_resource type="Script" path="res://GUI/start_menu_screen.gd" id="1_nvonf"]
+[ext_resource type="Script" path="res://GUI/GUIMenuScenes/start_menu_screen.gd" id="1_nvonf"]
 [ext_resource type="Texture2D" uid="uid://dn46njyxsjug5" path="res://GUI/MenuBackgrounds/MenuBackgroundImage.png" id="2_ccjpt"]
 [ext_resource type="FontFile" uid="uid://b10uvsj1044em" path="res://GUI/Fonts/PixelEmulator-xq08.ttf" id="5_706th"]
 [ext_resource type="Theme" uid="uid://w7en7g743evq" path="res://GUI/UITheme.tres" id="5_wfxlm"]

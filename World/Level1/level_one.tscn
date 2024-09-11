@@ -2,13 +2,13 @@
 
 [ext_resource type="TileSet" uid="uid://d28tjk5w5eytw" path="res://World/world-tileset.tres" id="1_vn3sk"]
 [ext_resource type="PackedScene" uid="uid://sl7omioy7phi" path="res://Player/2ndPlayerScript.tscn" id="2_hcvpe"]
-[ext_resource type="PackedScene" uid="uid://dbluolsggb5og" path="res://World/parallax_background.tscn" id="2_osp1o"]
 [ext_resource type="Script" path="res://World/Props/Ladder/Ladder.gd" id="2_ug4as"]
 [ext_resource type="PackedScene" uid="uid://8m7mp23c4f4" path="res://World/Enemies/Turret/EnemyTurret.tscn" id="2_wuajk"]
-[ext_resource type="Script" path="res://World/PlayerCamera2D.gd" id="4_un0o3"]
+[ext_resource type="Script" path="res://Player/PlayerCamera2D.gd" id="4_un0o3"]
 [ext_resource type="PackedScene" uid="uid://vduis8xqi7sg" path="res://World/Enemies/Drone/EnemyDrone.tscn" id="4_x3i34"]
 [ext_resource type="PackedScene" uid="uid://xgumpbld4suu" path="res://World/Pickups/Coin/coin_node_2d.tscn" id="5_4t603"]
 [ext_resource type="PackedScene" uid="uid://b8nyx53clsrgy" path="res://GUI/game_screen.tscn" id="6_nhkfr"]
+[ext_resource type="PackedScene" uid="uid://dbluolsggb5og" path="res://World/Background/parallax_background.tscn" id="8_mcut0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyv1n"]
 size = Vector2(20, 22.1956)
@@ -134,7 +134,7 @@ limit_bottom = 360
 script = ExtResource("4_un0o3")
 player = NodePath("../CharacterBody2D")
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("2_osp1o")]
+[node name="ParallaxBackground" parent="." instance=ExtResource("8_mcut0")]
 
 [node name="GameScreen" parent="." instance=ExtResource("6_nhkfr")]
 
