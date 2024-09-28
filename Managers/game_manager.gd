@@ -8,6 +8,9 @@ var level_1 = preload("res://World/Level1/level_one.tscn")
 
 var is_paused = false  # Track if the game is currently paused
 
+func _ready():
+	SettingsManager.load_settings()
+
 func start_game():
 	# Start the game by transitioning to the level scene
 	await transition_to_scene(level_1.resource_path)
@@ -15,7 +18,7 @@ func start_game():
 func exit_game(): 
 	get_tree().quit() 
 
-func pause_game():
+func pause_game():   
 	is_paused = true
 	get_tree().paused = true
 	# Hide the game scene when pausing

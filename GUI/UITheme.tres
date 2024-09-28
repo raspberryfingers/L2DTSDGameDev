@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://w7en7g743evq"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://w7en7g743evq"]
 
 [ext_resource type="FontFile" uid="uid://b10uvsj1044em" path="res://GUI/Fonts/PixelEmulator-xq08.ttf" id="1_koln0"]
 
@@ -84,6 +84,14 @@ expand_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6oxmk"]
 bg_color = Color(0.1696, 0.29574, 0.53, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+expand_margin_left = 6.0
+expand_margin_top = 6.0
+expand_margin_right = 6.0
+expand_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1mjk"]
 bg_color = Color(0.164075, 0.348784, 0.695984, 1)
@@ -132,6 +140,24 @@ expand_margin_bottom = 6.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ta2vg"]
 bg_color = Color(0, 0, 0.141176, 0.623529)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qadxo"]
+bg_color = Color(0.355338, 0.553786, 0.917726, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhtjv"]
+bg_color = Color(0.239216, 0.447059, 0.835294, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_color = Color(0.239216, 0.447059, 0.835294, 1)
+expand_margin_left = 6.0
+expand_margin_top = 6.0
+expand_margin_right = 6.0
+expand_margin_bottom = 6.0
+
 [resource]
 default_font = ExtResource("1_koln0")
 Button/font_sizes/font_size = 20
@@ -151,10 +177,18 @@ MarginContainer/constants/margin_bottom = 15
 MarginContainer/constants/margin_left = 15
 MarginContainer/constants/margin_right = 15
 MarginContainer/constants/margin_top = 15
+OptionButton/fonts/font = ExtResource("1_koln0")
 OptionButton/styles/disabled = SubResource("StyleBoxFlat_6oxmk")
 OptionButton/styles/focus = SubResource("StyleBoxFlat_o1mjk")
 OptionButton/styles/hover = SubResource("StyleBoxFlat_n8gad")
 OptionButton/styles/normal = SubResource("StyleBoxFlat_nkcc1")
 OptionButton/styles/pressed = SubResource("StyleBoxFlat_msumd")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ta2vg")
+PopupMenu/constants/h_separation = 10
+PopupMenu/constants/item_end_padding = 10
+PopupMenu/constants/item_start_padding = 10
+PopupMenu/constants/v_separation = 8
+PopupMenu/font_sizes/font_size = 35
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_qadxo")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_qhtjv")
 VBoxContainer/constants/separation = 23

@@ -64,9 +64,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hdl8t"]
 radius = 29.3333
 
-[node name="DroneAttackNode2D" type="Node2D" groups=["Enemy"]]
+[node name="DroneAttackNode2D" type="Node2D" node_paths=PackedStringArray("timer")]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_y63og")
+timer = NodePath("Timer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_43gwq")
@@ -75,8 +76,6 @@ frame = 6
 frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="."]
-one_shot = true
-autostart = true
 
 [node name="ExplosionArea2D" type="Area2D" parent="." groups=["Enemy"]]
 collision_layer = 4
@@ -85,3 +84,6 @@ script = ExtResource("3_y3tat")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea2D"]
 shape = SubResource("CircleShape2D_hdl8t")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="ExplosionArea2D" to="." method="_on_explosion_area_2d_body_entered"]

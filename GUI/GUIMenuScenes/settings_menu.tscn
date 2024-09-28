@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://d16n6kh4l4j8o"]
+[gd_scene load_steps=8 format=3 uid="uid://d16n6kh4l4j8o"]
 
+[ext_resource type="Script" path="res://GUI/GUIMenuScenes/settings_menu.gd" id="1_3o0lb"]
 [ext_resource type="Texture2D" uid="uid://dn46njyxsjug5" path="res://GUI/MenuBackgrounds/MenuBackgroundImage.png" id="1_sdr75"]
 [ext_resource type="FontFile" uid="uid://cnqgqyunqiim5" path="res://GUI/Fonts/GlitchGoblin-2O87v.ttf" id="2_l6k4o"]
 [ext_resource type="FontFile" uid="uid://b10uvsj1044em" path="res://GUI/Fonts/PixelEmulator-xq08.ttf" id="3_2a6xr"]
@@ -19,6 +20,7 @@ shadow_color = Color(0.113725, 0.329412, 0.113725, 0.0901961)
 
 [node name="SettingsMenuCanvasLayer" type="CanvasLayer"]
 layer = 2
+script = ExtResource("1_3o0lb")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -33,6 +35,7 @@ grow_vertical = 2
 texture = ExtResource("1_sdr75")
 
 [node name="Tittle" type="Label" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -69,12 +72,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -183.5
-offset_top = 96.0
-offset_right = 183.5
-offset_bottom = 136.0
+offset_left = -298.0
+offset_top = -86.0
+offset_right = 94.0
+offset_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.5, 1.5)
 theme = ExtResource("4_6uyt2")
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
@@ -88,10 +92,16 @@ layout_mode = 2
 
 [node name="WindowModeOptionButton" type="OptionButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="ResolutionModeOptionButton2" type="OptionButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="MainMenuButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Main Menu"
+text = "     Main Menu     "
+
+[connection signal="item_selected" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/WindowModeOptionButton" to="." method="_on_window_mode_option_button_item_selected"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ResolutionModeOptionButton2" to="." method="_on_resolution_mode_option_button_2_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
