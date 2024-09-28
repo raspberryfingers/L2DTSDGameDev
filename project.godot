@@ -22,6 +22,11 @@ HealthManager="*res://Managers/health_manager.gd"
 CollectableManager="*res://Managers/collectable_manager.gd"
 SettingsManager="*res://Managers/settings_manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [input]
 
 jump={
