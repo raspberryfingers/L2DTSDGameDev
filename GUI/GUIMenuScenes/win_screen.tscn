@@ -1,3 +1,120 @@
-[gd_scene format=3 uid="uid://cfvq3slfieaa5"]
+[gd_scene load_steps=8 format=3 uid="uid://cfvq3slfieaa5"]
+
+[ext_resource type="Texture2D" uid="uid://dn46njyxsjug5" path="res://GUI/MenuBackgrounds/MenuBackgroundImage.png" id="1_dkxh3"]
+[ext_resource type="Script" path="res://GUI/GUIMenuScenes/win_screen.gd" id="1_o0530"]
+[ext_resource type="FontFile" uid="uid://cnqgqyunqiim5" path="res://GUI/Fonts/GlitchGoblin-2O87v.ttf" id="2_r3023"]
+[ext_resource type="FontFile" uid="uid://b10uvsj1044em" path="res://GUI/Fonts/PixelEmulator-xq08.ttf" id="3_d7ugt"]
+[ext_resource type="Theme" uid="uid://w7en7g743evq" path="res://GUI/UITheme.tres" id="4_tgke1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_puqjv"]
+font = ExtResource("2_r3023")
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_u2vfe"]
+font = ExtResource("3_d7ugt")
+font_size = 24
+outline_size = 6
+outline_color = Color(0.988235, 0.345098, 0.231373, 1)
+shadow_size = 20
+shadow_color = Color(0.113725, 0.329412, 0.113725, 0.0901961)
 
 [node name="WinScreenCanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_o0530")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -704.0
+offset_top = -476.0
+offset_right = 704.0
+offset_bottom = 476.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_dkxh3")
+
+[node name="Tittle" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -453.0
+offset_top = 239.0
+offset_right = 454.0
+offset_bottom = 354.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_r3023")
+text = "You Escaped !"
+label_settings = SubResource("LabelSettings_puqjv")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = 46.0
+offset_right = 106.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_d7ugt")
+theme_override_font_sizes/font_size = 25
+text = "Play Again?"
+
+[node name="StatusLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -558.0
+offset_top = -308.0
+offset_right = -362.0
+offset_bottom = -256.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Connecting..."
+label_settings = SubResource("LabelSettings_u2vfe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 100.0
+offset_right = 120.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_tgke1")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="YesButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_d7ugt")
+text = " Yes "
+
+[node name="NoButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = " No "
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]

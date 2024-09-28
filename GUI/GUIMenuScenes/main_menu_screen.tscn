@@ -19,6 +19,7 @@ shadow_size = 20
 shadow_color = Color(0.113725, 0.329412, 0.113725, 0.0901961)
 
 [node name="MainMenuScreen" type="CanvasLayer"]
+process_mode = 3
 layer = 2
 script = ExtResource("1_2xqp0")
 
@@ -89,16 +90,16 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="StartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("4_41dvs")
 text = " Start "
 
-[node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="SettingsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+process_mode = 3
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("4_41dvs")
-text = " Quit Game "
+text = " Settings "
 
 [node name="AddIP" type="LineEdit" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(175, 0)
@@ -108,10 +109,13 @@ text = "127.0.0.1"
 placeholder_text = "Add IP"
 alignment = 1
 
-[node name="SettingsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+process_mode = 3
 layout_mode = 2
-text = " Settings "
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_41dvs")
+text = " Quit Game "
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
