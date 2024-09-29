@@ -11,11 +11,11 @@ var player : CharacterBody2D
 var has_shot : bool = false  # Track whether the turret has shot once
 
 # Called every frame, can be used for non-physics related updates.
-func on_process(delta : float):
+func on_process(_delta : float):
 	pass
 	 
 # Called every physics frame, used for physics-related updates.
-func on_physics_process(delta : float):
+func on_physics_process(_delta : float):
 	if player and not has_shot:
 		shoot_bullet()
 		has_shot = true

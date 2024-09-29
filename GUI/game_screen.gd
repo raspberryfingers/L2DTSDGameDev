@@ -47,12 +47,12 @@ func _on_game_timer_timeout():
 	if is_timer_running:
 		elapsed_time += 1.0
 		
-		# Calculate minutes and seconds
-		var minutes = int(elapsed_time) / 60
+		# Calculate miliseconds and seconds
 		var seconds = int(elapsed_time) % 60
-		
-		# Format the time as 00:00 (minutes:seconds)
-		timer_label.text = str("%02d:%02d" % [minutes, seconds]) 
+		var milliseconds = int((elapsed_time - seconds) * 1000)
+	
+		# Format the time as SS:MMM (seconds:milliseconds)
+		timer_label.text = ": %02d:%03d" % [seconds, milliseconds]
 
 # Function to stop the timer
 func stop_timer():

@@ -110,7 +110,7 @@ func enemy_chase(delta: float):
 		current_state = State.Frozen  # Freeze if player is lost
 
 # Handles the frozen state where the enemy stops moving
-func enemy_frozen(delta: float):
+func enemy_frozen(_delta: float):
 	velocity = Vector2.ZERO  # Stop the enemy's movement
 
 # Handles the explosion of the enemy

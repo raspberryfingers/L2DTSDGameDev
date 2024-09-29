@@ -17,11 +17,11 @@ func update_labels(total_reward: int, elapsed_time: float):
 	reward_label.text = ": " + str(total_reward)
 	
 	# Calculate minutes and seconds from elapsed_time
-	var minutes = int(elapsed_time) / 60
 	var seconds = int(elapsed_time) % 60
+	var milliseconds = int((elapsed_time - seconds) * 1000)
 	
-	# Format the time as 00:00 (minutes:seconds)
-	time_label.text = ": %02d:%02d" % [minutes, seconds]
+	# Format the time as SS:MMM (seconds:milliseconds)
+	time_label.text = ": %02d:%03d" % [seconds, milliseconds]
 
 func _on_quit_game_button_pressed():
 	GameManager.exit_game()

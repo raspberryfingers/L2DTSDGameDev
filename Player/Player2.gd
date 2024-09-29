@@ -43,18 +43,12 @@ func _physics_process(delta : float):
 	player_jump(delta)
 	player_crouch(delta)
 	player_climbing(delta)
-	player_shooting(delta)
+	player_shooting()
 	
 	player_muzzle_position()
 	move_and_slide() 
 	
 	player_animations()
-
-# Function to spawn the player at a given position
-func spawn_at(position: Vector2):
-	global_position = position
-	# Reset any other player state here, e.g., health
-	HealthManager.restart_health() 
 
 # Fall state conditions  
 func player_falling(delta : float): 
@@ -129,7 +123,7 @@ func player_crouch(_delta : float):
 
 
 # Play the bullet scene when conditions met 
-func player_shooting(delta : float): 
+func player_shooting(): 
 	var direction = input_movement()
 	if direction:
 		last_direction = direction

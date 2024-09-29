@@ -1,10 +1,10 @@
 class_name NodeState
 extends Node
 
-func on_process(delta : float):
+func on_process(_delta : float):
 	pass
 	
-func on_physics_process(delta : float):
+func on_physics_process(_delta : float):
 	pass
 
 # Called when the node enters the scene tree for the first time.
@@ -13,5 +13,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass

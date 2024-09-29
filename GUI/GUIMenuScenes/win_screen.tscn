@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfvq3slfieaa5"]
+[gd_scene load_steps=9 format=3 uid="uid://cfvq3slfieaa5"]
 
 [ext_resource type="Texture2D" uid="uid://dn46njyxsjug5" path="res://GUI/MenuBackgrounds/MenuBackgroundImage.png" id="1_dkxh3"]
 [ext_resource type="Script" path="res://GUI/GUIMenuScenes/win_screen.gd" id="1_o0530"]
@@ -11,14 +11,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_puqjv"]
 font = ExtResource("2_r3023")
 font_size = 100
-
-[sub_resource type="LabelSettings" id="LabelSettings_u2vfe"]
-font = ExtResource("3_d7ugt")
-font_size = 24
-outline_size = 6
-outline_color = Color(0.988235, 0.345098, 0.231373, 1)
-shadow_size = 20
-shadow_color = Color(0.113725, 0.329412, 0.113725, 0.0901961)
 
 [node name="WinScreenCanvasLayer" type="CanvasLayer"]
 layer = 3
@@ -49,24 +41,6 @@ theme_override_fonts/font = ExtResource("2_r3023")
 text = "You Escaped !"
 label_settings = SubResource("LabelSettings_puqjv")
 horizontal_alignment = 1
-
-[node name="StatusLabel" type="Label" parent="."]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -558.0
-offset_top = -308.0
-offset_right = -362.0
-offset_bottom = -256.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Connecting..."
-label_settings = SubResource("LabelSettings_u2vfe")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 8
@@ -104,9 +78,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -257.0
+offset_left = -308.0
 offset_top = 54.0
-offset_right = 149.0
+offset_right = 189.0
 offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -134,7 +108,7 @@ expand_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_d7ugt")
 theme_override_font_sizes/font_size = 30
-text = "100"
+text = ": 100"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer3"]
 layout_mode = 2
@@ -149,6 +123,6 @@ expand_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_d7ugt")
 theme_override_font_sizes/font_size = 30
-text = "100"
+text = ": 00:00"
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]

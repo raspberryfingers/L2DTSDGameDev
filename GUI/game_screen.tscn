@@ -50,6 +50,7 @@ texture = ExtResource("3_qudcv")
 hframes = 4
 
 [node name="CollectableLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Control"]
+layout_mode = 0
 offset_left = 75.0
 offset_top = 60.0
 offset_right = 98.0
