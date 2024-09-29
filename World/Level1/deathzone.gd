@@ -1,18 +1,12 @@
-extends Node2D
+extends Area2D
 
-@onready var scene_timer = $Timer
-
+@export var damage_amount : int = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	scene_timer.start(2)
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-
-func _on_timer_timeout():
-	queue_free()
-	GameManager.lose_game() 

@@ -20,6 +20,7 @@ shadow_color = Color(0.113725, 0.329412, 0.113725, 0.0901961)
 
 [node name="LoseScreenCanvasLayer" type="CanvasLayer"]
 process_mode = 3
+layer = 3
 script = ExtResource("1_h78u0")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -62,7 +63,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_cj3ar")
 theme_override_font_sizes/font_size = 25
-text = "Play Again?"
+text = "!! Thanks For playing !!"
 
 [node name="StatusLabel" type="Label" parent="."]
 visible = false
@@ -105,17 +106,11 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="YesButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="QuitGameButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_cj3ar")
-text = " Yes "
+text = " Quit Game "
 
-[node name="NoButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
-process_mode = 3
-layout_mode = 2
-text = " No "
-
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://pususwmlctm0"]
+[gd_scene load_steps=26 format=3 uid="uid://pususwmlctm0"]
 
 [ext_resource type="PackedScene" uid="uid://jolkbo4lijv6" path="res://World/EndPortal/end_portal_area_2d.tscn" id="1_14a62"]
 [ext_resource type="TileSet" uid="uid://d28tjk5w5eytw" path="res://World/world-tileset.tres" id="1_vn3sk"]
@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://vduis8xqi7sg" path="res://World/Enemies/Drone/EnemyDrone.tscn" id="4_x3i34"]
 [ext_resource type="PackedScene" uid="uid://xgumpbld4suu" path="res://World/Pickups/Coin/coin_node_2d.tscn" id="5_4t603"]
 [ext_resource type="PackedScene" uid="uid://b8nyx53clsrgy" path="res://GUI/game_screen.tscn" id="6_nhkfr"]
+[ext_resource type="Script" path="res://World/Level1/deathzone.gd" id="6_ocix6"]
+[ext_resource type="PackedScene" uid="uid://b1si8d0ia1ern" path="res://World/Pickups/Heart/heart_pickup.tscn" id="7_g8k1h"]
 [ext_resource type="PackedScene" uid="uid://dbluolsggb5og" path="res://World/Background/parallax_background.tscn" id="8_mcut0"]
+[ext_resource type="AudioStream" uid="uid://d2qgefq70aowe" path="res://Music/cyber_runner.ogg" id="13_4vrhg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyv1n"]
 size = Vector2(20, 22.1956)
@@ -43,6 +46,9 @@ size = Vector2(20, 27.1605)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5owv"]
 size = Vector2(20, 22.4877)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmrka"]
+size = Vector2(4230, 20)
 
 [node name="LevelOne" type="Node2D"]
 
@@ -102,7 +108,6 @@ script = ExtResource("2_ug4as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_Background_/_Ladders_/LadderArea2D4"]
 position = Vector2(531.099, 29.3508)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_u0qep")
 
 [node name="LadderArea2D5" type="Area2D" parent="_Background_/_Ladders_"]
@@ -113,7 +118,6 @@ script = ExtResource("2_ug4as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_Background_/_Ladders_/LadderArea2D5"]
 position = Vector2(2823.21, 55.124)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1dn4i")
 
 [node name="LadderArea2D6" type="Area2D" parent="_Background_/_Ladders_"]
@@ -124,7 +128,6 @@ script = ExtResource("2_ug4as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_Background_/_Ladders_/LadderArea2D6"]
 position = Vector2(2823.21, 19.9688)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_tdu2s")
 
 [node name="LadderArea2D7" type="Area2D" parent="_Background_/_Ladders_"]
@@ -135,7 +138,6 @@ script = ExtResource("2_ug4as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_Background_/_Ladders_/LadderArea2D7"]
 position = Vector2(2823.21, -12.7406)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_h78od")
 
 [node name="LadderArea2D8" type="Area2D" parent="_Background_/_Ladders_"]
@@ -146,7 +148,6 @@ script = ExtResource("2_ug4as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_Background_/_Ladders_/LadderArea2D8"]
 position = Vector2(3102.74, 27.0144)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_4niqe")
 
 [node name="LadderArea2D9" type="Area2D" parent="_Background_/_Ladders_"]
@@ -157,7 +158,6 @@ script = ExtResource("2_ug4as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_Background_/_Ladders_/LadderArea2D9"]
 position = Vector2(4276.74, 57.3508)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_sukvp")
 
 [node name="LadderArea2D10" type="Area2D" parent="_Background_/_Ladders_"]
@@ -168,7 +168,6 @@ script = ExtResource("2_ug4as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_Background_/_Ladders_/LadderArea2D10"]
 position = Vector2(4556.27, 55.0509)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ue11n")
 
 [node name="LadderArea2D11" type="Area2D" parent="_Background_/_Ladders_"]
@@ -179,7 +178,6 @@ script = ExtResource("2_ug4as")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="_Background_/_Ladders_/LadderArea2D11"]
 position = Vector2(4556.27, 20.0053)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_l5owv")
 
 [node name="_Enemies_" type="Node" parent="."]
@@ -226,16 +224,34 @@ position = Vector2(630, 311)
 [node name="PatrolPoint2" type="Marker2D" parent="_Enemies_/_Drones_/DroneCharacterBody2D/PatrolPoints"]
 position = Vector2(750, 311)
 
+[node name="Area2D" type="Area2D" parent="_Enemies_" groups=["Enemy"]]
+position = Vector2(-30, 381)
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("6_ocix6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_Enemies_/Area2D"]
+position = Vector2(1724, 0)
+shape = SubResource("RectangleShape2D_kmrka")
+
 [node name="_Pickups_" type="Node" parent="."]
 
-[node name="CoinNode2D" parent="_Pickups_" instance=ExtResource("5_4t603")]
+[node name="_Coins_" type="Node" parent="_Pickups_"]
+
+[node name="CoinNode2D" parent="_Pickups_/_Coins_" instance=ExtResource("5_4t603")]
 position = Vector2(374, 315)
 
-[node name="CoinNode2D2" parent="_Pickups_" instance=ExtResource("5_4t603")]
+[node name="CoinNode2D2" parent="_Pickups_/_Coins_" instance=ExtResource("5_4t603")]
 position = Vector2(431, 315)
 
-[node name="CoinNode2D3" parent="_Pickups_" instance=ExtResource("5_4t603")]
+[node name="CoinNode2D3" parent="_Pickups_/_Coins_" instance=ExtResource("5_4t603")]
 position = Vector2(484, 315)
+
+[node name="_Health_" type="Node" parent="_Pickups_"]
+
+[node name="Node2D" parent="_Pickups_/_Health_" instance=ExtResource("7_g8k1h")]
+position = Vector2(776, 219)
+pickup_amount = 2
 
 [node name="_Player_" type="Node" parent="."]
 
@@ -252,9 +268,16 @@ limit_bottom = 360
 script = ExtResource("4_un0o3")
 player = NodePath("../CharacterBody2D")
 
+[node name="SpawnPointMarker2D" type="Marker2D" parent="_Player_"]
+position = Vector2(31, 308)
+
 [node name="ParallaxBackground" parent="." instance=ExtResource("8_mcut0")]
 
 [node name="GameScreen" parent="." instance=ExtResource("6_nhkfr")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_4vrhg")
+autoplay = true
 
 [connection signal="body_entered" from="_Background_/_Ladders_/LadderArea2D" to="_Background_/_Ladders_/LadderArea2D" method="_on_body_entered"]
 [connection signal="body_exited" from="_Background_/_Ladders_/LadderArea2D" to="_Background_/_Ladders_/LadderArea2D" method="_on_body_exited"]

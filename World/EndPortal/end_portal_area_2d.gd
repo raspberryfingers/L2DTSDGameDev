@@ -1,16 +1,8 @@
 extends Area2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_body_entered(body):
-	if body.is_in_group("Player"):
-		GameManager.win_game()
+	if body.is_in_group("Player"):  # Assuming your player is in a group named "Player"
+		var total_reward = CollectableManager.total_award_amount
+		var elapsed_time = GameTimer.elapsed_time  # Access the elapsed time from the singleton
+		GameManager.win_game()  # Call the win_game function in GameManager

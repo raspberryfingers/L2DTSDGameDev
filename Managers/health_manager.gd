@@ -28,5 +28,6 @@ func increase_health(health_amount : int):
 		
 	print("increase health called")
 	on_health_changed.emit(current_health) 
+	
 
 

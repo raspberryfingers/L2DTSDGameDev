@@ -50,6 +50,11 @@ func _physics_process(delta : float):
 	
 	player_animations()
 
+# Function to spawn the player at a given position
+func spawn_at(position: Vector2):
+	global_position = position
+	# Reset any other player state here, e.g., health
+	HealthManager.restart_health() 
 
 # Fall state conditions  
 func player_falling(delta : float): 

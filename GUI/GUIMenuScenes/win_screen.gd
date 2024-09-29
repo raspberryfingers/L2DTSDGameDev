@@ -1,11 +1,28 @@
 extends CanvasLayer
 
+@onready var reward_label = $HBoxContainer3/HBoxContainer/RewardLabel
+@onready var time_label = $HBoxContainer3/HBoxContainer2/TimeLabel
 
-func _on_yes_button_pressed():
-	GameManager.start_game()
-	queue_free()
+func _ready():
+	# Check if labels are assigned correctly
+	if reward_label == null:
+		print("Error: reward_label is null")
+	if time_label == null:
+		print("Error: time_label is null")
 
+	update_labels(GameManager.game_data.total_reward, GameManager.game_data.elapsed_time)
 
-func _on_no_button_pressed():
-	GameManager.start_game()
+# Function to update the labels with reward and time
+func update_labels(total_reward: int, elapsed_time: float):
+	reward_label.text = ": " + str(total_reward)
+	
+	# Calculate minutes and seconds from elapsed_time
+	var minutes = int(elapsed_time) / 60
+	var seconds = int(elapsed_time) % 60
+	
+	# Format the time as 00:00 (minutes:seconds)
+	time_label.text = ": %02d:%02d" % [minutes, seconds]
+
+func _on_quit_game_button_pressed():
+	GameManager.exit_game()
 	queue_free()

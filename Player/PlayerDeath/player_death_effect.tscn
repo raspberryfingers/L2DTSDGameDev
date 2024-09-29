@@ -164,7 +164,5 @@ scale_amount_max = 1.5
 color_ramp = SubResource("Gradient_wtn10")
 
 [node name="Timer" type="Timer" parent="."]
-one_shot = true
-autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

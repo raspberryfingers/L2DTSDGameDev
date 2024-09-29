@@ -21,6 +21,7 @@ GameManager="*res://Managers/game_manager.gd"
 HealthManager="*res://Managers/health_manager.gd"
 CollectableManager="*res://Managers/collectable_manager.gd"
 SettingsManager="*res://Managers/settings_manager.gd"
+GameTimer="*res://GUI/OnScreen/game_timer.gd"
 
 [display]
 

@@ -8,7 +8,11 @@ var bullet_impact_effect = preload("res://Player/Assets/bulleteffect/Bullet Impa
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	# Set the flip of the bullet sprite based on its direction
+	if direction < 0:
+		flip_h = true  # Flip sprite when moving left
+	else:
+		flip_h = false  # Do not flip when moving right
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
