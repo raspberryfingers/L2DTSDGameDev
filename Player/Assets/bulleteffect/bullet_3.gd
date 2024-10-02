@@ -21,9 +21,10 @@ func _process(delta):
 func _on_timer_timeout():
 	queue_free()
 
-func _on_hitbox_area_entered(_area):
-	print("bullet area entered")
-	bullet_impact() 
+func _on_hitbox_area_entered(area):
+	if area.is_in_group("Enemy"):
+		print("bullet area entered")
+		bullet_impact() 
 
 func _on_hitbox_body_entered(_body):
 	print("bullet body entered")

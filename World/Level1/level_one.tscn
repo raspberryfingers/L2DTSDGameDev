@@ -345,7 +345,7 @@ pickup_amount = 2
 [node name="_Player_" type="Node" parent="."]
 
 [node name="CharacterBody2D" parent="_Player_" instance=ExtResource("2_hcvpe")]
-position = Vector2(31, 308)
+position = Vector2(32, 312)
 
 [node name="Camera2D" type="Camera2D" parent="_Player_" node_paths=PackedStringArray("player")]
 position = Vector2(144, 278)

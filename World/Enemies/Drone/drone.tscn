@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dj5bvj5ik8sfy"]
+[gd_scene load_steps=7 format=3 uid="uid://dj5bvj5ik8sfy"]
 
-[ext_resource type="Texture2D" uid="uid://pmofgkdhd6u2" path="res://Enemies/Drone/drone_preview.png" id="1_dfg34"]
-[ext_resource type="Script" path="res://Enemies/Drone/drone.gd" id="1_pxc43"]
+[ext_resource type="Texture2D" uid="uid://pmofgkdhd6u2" path="res://World/Enemies/Drone/drone_preview.png" id="1_dfg34"]
+[ext_resource type="Script" path="res://World/Enemies/Drone/drone.gd" id="1_pxc43"]
 
 [sub_resource type="Animation" id="Animation_rmn1b"]
 length = 0.001
@@ -59,6 +59,8 @@ _data = {
 "drone": SubResource("Animation_l2v0t")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ltpql"]
+
 [node name="Drone" type="Area2D"]
 script = ExtResource("1_pxc43")
 
@@ -71,3 +73,6 @@ libraries = {
 "": SubResource("AnimationLibrary_j4qjh")
 }
 autoplay = "drone"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ltpql")
